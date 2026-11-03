@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Checkpoint Project - TV Loop</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #101a13; overflow: hidden; }
+  video { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #101a13; }
+  a.fallback { position: fixed; left: 12px; bottom: 10px; color: #8fae7a; font: 14px Georgia, serif; opacity: 0; }
+  video:not([data-ok]) ~ a.fallback { opacity: .8; }
+</style>
+</head>
+<body>
+<video autoplay loop muted playsinline preload="auto" src="checkpoint-card-loop.mp4" onplaying="this.setAttribute('data-ok','1')"></video>
+<a class="fallback" href="checkpoint-card-loop.mp4">Open the video file</a>
+</body>
+</html>
