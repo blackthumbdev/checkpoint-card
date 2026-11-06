@@ -43,7 +43,7 @@
   .track {
     position: relative;
     width: 100%;
-    height: min(80vh, 660px, 111vw);
+    height: min(80vh, 660px, 124vw);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -117,6 +117,11 @@
   .arrow:hover { opacity: 1; }
   .arrow.left-arrow { left: 14px; }
   .arrow.right-arrow { right: 14px; }
+  @media (max-width: 600px) {
+    .arrow { top: auto; bottom: max(44px, env(safe-area-inset-bottom, 0px) + 36px); transform: none; width: 36px; height: 36px; font-size: 1.05rem; }
+    .arrow.left-arrow { left: 8px; }
+    .arrow.right-arrow { right: 8px; }
+  }
   .badge {
     position: absolute;
     top: max(18px, env(safe-area-inset-top, 0px) + 10px);
@@ -149,7 +154,7 @@
  html,body{margin:0;height:100%;background:transparent}
  body{display:flex;align-items:center;justify-content:center}
  #frame{width:1040px;height:720px;transform-origin:center;position:relative}
- #stage{position:absolute;left:0;top:0;width:1040px;height:720px;overflow:hidden;background:transparent}
+ #stage{position:absolute;left:0;top:0;width:1040px;height:720px;overflow:visible;background:transparent}
  .abs{position:absolute}
  #cardclip{position:absolute;left:0;width:1040px;overflow:hidden;perspective:1800px}
  #cardpos{position:absolute;left:0;top:0;width:440px;height:569px;transform-origin:50% 50%}
@@ -184,13 +189,13 @@
 &lt;script&gt;
 let SW=1040; const ENV=[114, 103, 102]; const W=520,H=397; let EX=260; const ET=225,FH=246,NOTCH=0.50;
 const CW=440,CH=569;
-function targets(){ const vw=innerWidth,vh=innerHeight; const k=Math.min(vw/SW,vh/720,1.4); const Hc=Math.min(0.8*vh,660,1.113*vw); return {CYF:360,SF:(Hc/k)/CH}; }
+function targets(){ const vw=innerWidth,vh=innerHeight; const k=Math.min(vw/SW,vh/720,1.4); const Hc=Math.min(0.8*vh,660,1.24*vw); return {CYF:360,SF:(Hc/k)/CH}; }
 function layout(){ const vw=innerWidth,vh=innerHeight; SW=(vw&lt;vh*0.95)?640:1040; EX=SW/2-260;
   const fr=$(&#x27;frame&#x27;); fr.style.position=&#x27;absolute&#x27;; fr.style.width=SW+&#x27;px&#x27;; fr.style.left=(vw/2-SW/2)+&#x27;px&#x27;; fr.style.top=(vh/2-360)+&#x27;px&#x27;;
   $(&#x27;stage&#x27;).style.width=SW+&#x27;px&#x27;; $(&#x27;cardclip&#x27;).style.width=SW+&#x27;px&#x27;;
   for(const id of [&#x27;envBack&#x27;,&#x27;pocket&#x27;,&#x27;flap&#x27;]) $(id).style.left=EX+&#x27;px&#x27;;
   const c=$(&#x27;ctl&#x27;); if(c.parentNode!==document.body) document.body.appendChild(c);
-  const Hc=Math.min(0.8*vh,660,1.113*vw); c.style.position=&#x27;fixed&#x27;; c.style.bottom=&#x27;auto&#x27;; c.style.top=(vh/2+Hc/2+16)+&#x27;px&#x27;; }
+  const Hc=Math.min(0.8*vh,660,1.24*vw); c.style.position=&#x27;fixed&#x27;; c.style.bottom=&#x27;auto&#x27;; c.style.top=(vh/2+Hc/2+16)+&#x27;px&#x27;; }
 const sh=(c,f)=&gt;&#x27;rgb(&#x27;+c.map(x=&gt;Math.max(0,Math.min(255,Math.round(x*f)))).join(&#x27;,&#x27;)+&#x27;)&#x27;;
 const $=id=&gt;document.getElementById(id);
 const clamp=(x,a=0,b=1)=&gt;Math.min(b,Math.max(a,x));
